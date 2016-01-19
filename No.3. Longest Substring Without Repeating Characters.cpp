@@ -21,3 +21,29 @@ public:
         
     }
 };
+
+//hash table it runs faster than the below
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        if(s.empty()) return 0;
+        vector<int> hash(256,-1);
+        int length = 1;
+        int start = 0;
+        for (int i = 0; i < s.size(); i++){
+            if(hash[s[i]] >= start){ //found
+                start = hash[s[i]] + 1;
+                
+            }
+            else{
+                if (length < i-start+1){
+                    length = i-start+1;
+                }
+            }
+            hash[s[i]] = i;
+            
+        }
+        return length;
+        
+    }
+};
