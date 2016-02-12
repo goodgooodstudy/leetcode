@@ -12,5 +12,8 @@ public:
         else return false;
         // return n>0?!(1162261467 % n):0;  //it works as well, but you need to calculate the max one of power 3
 
+
+
+
     }
 };
