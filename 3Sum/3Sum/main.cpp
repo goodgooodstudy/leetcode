@@ -47,6 +47,7 @@ public:
         
         auto l = unique(results.begin(), results.end());
         results.resize(distance(results.begin(), l));
+
          for (auto tmp:results){
              cout << tmp[0]<<" "<<tmp[1]<<" "<<tmp[2]<<endl;
         
