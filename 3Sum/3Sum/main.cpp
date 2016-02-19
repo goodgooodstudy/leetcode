@@ -25,6 +25,7 @@ public:
             total = 0-nums[i];
             for(int j = i+1; j < nums.size()-2;j++){
                 int k = nums.size()-1;
+
                 while(j<k){
                     if(nums[j] + nums[k]< total){
                         j++;
