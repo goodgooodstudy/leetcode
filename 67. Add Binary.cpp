@@ -13,6 +13,7 @@ public:
             if(i >= b.size()) t2 = 0;
             else t2 = b[i] - '0';
             
+            
             c.push_back((t1+t2+add)%2+'0');
             add = (t1+t2+add)/2;
         }
