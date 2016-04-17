@@ -31,12 +31,24 @@ public:
         
     // }
     ListNode* reverseKGroup(ListNode* head, int k){
+        if(head == NULL || head->next == NULL || k<2) return head;
+        ListNode dummy(-1);
+        dummy.next = head;
+        for(ListNode* prev = &dummy, *end = prev->next;end; end = prev->next){
+            for(int i = 1; i <k && end; i++){
+                end = end->next;
+            }
+            if(end == NULL) break;
+            prev = reverse(prev, prev->next, end);
+            
+        }
+        return dummy.next;
         
         
     }
     ListNode* reverse(ListNode* prev, ListNode* begin, ListNode* end){
         ListNode* end_next = end->next;
-        ListNode* pre = NUll, *cur = begin, *next = cur->next;
+        ListNode* pre = NULL, *cur = begin, *next = cur->next;
         while(cur!=end_next){
             next = cur->next;
             cur->next = pre?pre:end_next;
@@ -44,6 +56,6 @@ public:
             cur = next;
         }
         prev->next = pre;
-        return pre;
+        return begin;
     }
 };
