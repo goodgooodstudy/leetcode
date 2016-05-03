@@ -9,6 +9,21 @@
  */
 class Solution {
 public:
+  // recursive one
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> result;
+        inorder(result, root);
+        return result;
+
+    }
+    void inorder(vector<int>& path, TreeNode *root){
+        if(root!=NULL){
+            inorder(path, root->left);
+            path.push_back(root->val);
+            inorder(path,root->right);
+        }
+    }
+
     vector<int> inorderTraversal(TreeNode* root) {
         vector<int> result;
         stack<const TreeNode *> s;
