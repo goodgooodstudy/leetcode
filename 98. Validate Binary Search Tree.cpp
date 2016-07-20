@@ -10,18 +10,16 @@
 class Solution {
 public:
     bool isValidBST(TreeNode* root) {
-        int i = INT_MIN;
-        bool first = true;
-        return isValid(root,i,first);
+        TreeNode* prev = NULL;
+        return isValid(root,prev);
         
     }
-    bool isValid(TreeNode* root, int& previous, bool& first){
+    bool isValid(TreeNode* root, TreeNode*& previous){
         if(root == NULL) return true;
-        if(isValid(root->left, previous,first) == false)return false;
-        if(first== false && root->val <= previous )return false;
-        previous = root->val;
-        first = false;
-        if(isValid(root->right, previous,first) == false) return false;
+        if(isValid(root->left, previous) == false)return false;
+        if(previous!= NULL && root->val <= previous->val )return false;
+        previous = root;
+        if(isValid(root->right, previous) == false) return false;
         return true;
     }
 };
