@@ -32,7 +32,7 @@ public:
 
 
 
-dp judge ispal
+//dp judge ispalindrome
 class Solution {
 public:
     vector<vector<string>> partition(string s) {
