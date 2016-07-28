@@ -1,3 +1,24 @@
+//判断mid和end，因为有两个元素的时候，mid就是begin，判断mid和begin有问题
+class Solution {
+public:
+    int findMin(vector<int>& nums) {
+        int begin = 0; 
+        int end = nums.size()-1;
+        while(begin < end){
+            int mid = (begin+end)/2;
+            if(nums[mid] < nums[end]){
+                end = mid;
+            }
+            else{
+                begin = mid+1;
+            }
+        }
+        return nums[begin];
+        
+    }
+    
+};
+
 class Solution {
 public:
     int findMin(vector<int>& nums) {
