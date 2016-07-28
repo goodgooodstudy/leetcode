@@ -29,3 +29,33 @@ public:
         }
     }
 };
+
+// 高级的做法
+class Solution {
+private: unordered_map<string, vector<string>> mp;
+        vector<string> combine(vector<string> prev, string word){
+            for(int i = 0 ; i<prev.size(); i++){
+                prev[i].append(" "+word);
+            }
+            return prev;
+        } 
+public:
+    vector<string> wordBreak(string s, unordered_set<string>& wordDict) {
+        if(mp.count(s)) return mp[s];
+        vector<string> res;
+        if(wordDict.count(s)) res.push_back(s);
+        for(int i = 1; i < s.size(); i++){
+            string word = s.substr(i);
+            if(wordDict.count(word)){
+                string rem = s.substr(0,i);
+                vector<string> prev = combine(wordBreak(rem, wordDict),word);
+                res.insert(res.end(), prev.begin(), prev.end());
+            }
+        }
+        mp[s] = res;
+        return res;
+        
+        
+    }
+   
+};
