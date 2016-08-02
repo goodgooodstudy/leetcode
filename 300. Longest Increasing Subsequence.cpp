@@ -17,3 +17,29 @@ public:
         
     }
 };
+
+/*nlogn*/
+class Solution {
+public:
+
+    
+    int lengthOfLIS(vector<int>& nums) {
+        
+        vector<int> ends;
+        for(int i = 0; i < nums.size(); i++){
+            int l = 0, r = ends.size()-1;
+            if(ends.size()==0 || nums[i] > ends.back()){
+                ends.push_back(nums[i]);
+                continue;
+            }
+            while(l < r){
+                int mid = (l+r)/2;
+                if(nums[i] <= ends[mid]) r = mid;
+                else l = mid+1;
+            }
+            ends[r] = nums[i];
+        }
+        return ends.size(); //ends are not the exact subsequence
+        
+    }
+};
