@@ -47,3 +47,21 @@ public:
         
     }
 };
+
+
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        vector<int> used(256,-1);
+        int mx = 0;
+        int p1 = -1;
+        for(int p2 = 0; p2 < s.size(); p2++){
+            if(used[s[p2]] > p1){
+                p1 = used[s[p2]];
+            }
+            mx = max(mx, p2-p1);
+            used[s[p2]] = p2;
+        }
+        return mx;
+    }
+};
