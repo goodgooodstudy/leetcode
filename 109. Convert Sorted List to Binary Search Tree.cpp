@@ -38,3 +38,42 @@ public:
         return root;
     }
 };
+
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* sortedListToBST(ListNode* head) {
+        return helper(head, NULL);
+        
+    }
+    TreeNode* helper(ListNode* left, ListNode* right){
+        if(left == right) return NULL;
+        ListNode* slow=left, *fast = left;
+        while(fast != right && fast->next!=right){
+            fast = fast->next->next;
+            slow = slow->next; //1,2,3,4
+        }
+        TreeNode* root = new TreeNode(slow->val);
+        root->left = helper(left, slow);
+        root->right = helper(slow->next,right );
+        return root;
+        
+    }
+};
