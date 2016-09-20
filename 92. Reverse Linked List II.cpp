@@ -29,4 +29,25 @@ public:
         
         
     }
+    
+    // write your code here
+        ListNode dummy(-1);
+        ListNode* pre = &dummy;
+        pre->next = head;
+        for(int i = 1; i < m; i++){
+            pre = pre->next;
+        }
+        if(m==n) return head;
+        ListNode* cur = pre->next->next;
+        ListNode* p = pre->next;
+        ListNode* next;
+        // cout << cur->val<<endl;
+        for(int i = 1; i <= n-m; i++){
+            next = cur->next;
+            cur->next = pre->next;
+            pre->next = cur;
+            p->next = next;
+            cur = next;
+        }
+        return dummy.next;
 };
