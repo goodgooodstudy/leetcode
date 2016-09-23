@@ -20,3 +20,27 @@ public:
         }
     }
 };
+
+
+class Solution {
+public:
+    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+       sort(candidates.begin(),candidates.end());
+       vector<vector<int>> rst;
+       vector<int> path;
+       helper(rst, path, target, candidates, 0);
+       return rst;
+       
+    }
+    void helper( vector<vector<int>>& rst, vector<int>& path, int target, vector<int>& candidates, int start){
+        if(target == 0){
+            rst.push_back(path);
+        }
+        for(int i = start; i < candidates.size()&&candidates[i] <= target; i++){
+            if(i>start && candidates[i] == candidates[i-1]) continue;
+            path.push_back(candidates[i]);
+            helper(rst, path, target-candidates[i], candidates, i+1);
+            path.pop_back();
+        }
+    }
+};
