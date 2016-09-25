@@ -66,3 +66,27 @@ public:
         
     }
 };
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        if(prices.size() < 2) return 0;
+        else{
+            int maxProfit = 0;
+            int K = 2;
+            vector<vector<int>> f(K+1, vector<int>(prices.size(), 0));
+            for(int kk = 1; kk <= K; kk++){
+                int tmp = f[kk-1][0] - prices[0];
+                for(int ii = 1; ii <prices.size(); ii++){
+                    f[kk][ii] = max(f[kk][ii-1], prices[ii]+tmp);
+                    tmp = max(tmp, f[kk-1][ii]-prices[ii]);
+                    maxProfit = max(maxProfit, f[kk][ii]);
+                }
+            }
+            return maxProfit;
+
+            
+        }
+        
+    }
+};
