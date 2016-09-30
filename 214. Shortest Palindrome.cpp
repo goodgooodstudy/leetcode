@@ -19,3 +19,35 @@ public:
         }
     }
 };
+
+
+class Solution {
+public:
+    string shortestPalindrome(string s) {
+        int i = 0, j = 1;
+        string rev(s);
+        reverse(rev.begin(), rev.end());
+        string ss;
+        ss = s+"#"+rev;
+        vector<int> len(ss.size(),0);
+        while(j < ss.size()){
+            if(ss[j] == ss[i]){
+                len[j] = i+1;
+                i++;
+                j++;
+            }
+            else{
+                if(i==0){
+                    len[j] = 0;
+
+                    j++;
+                } 
+                else i = len[i-1];
+            }
+        }
+        return rev.substr(0, s.size()- len[ss.size()-1])+s;
+        
+        
+    }
+   
+};
