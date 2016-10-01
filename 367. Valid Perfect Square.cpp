@@ -25,3 +25,23 @@ public:
         return false;
     }
 };
+
+class Solution {
+public:
+    bool isPerfectSquare(int num) {
+        int l = 1;
+        int r = num/2+1;
+        while(l <= r){
+            long long mid = l+(r-l)/2; //int * int -> long long still overflow
+         
+            if(mid*mid == num) return true;
+            else if(mid*mid < num){
+                l = mid +1;
+            }
+            else{
+                r = mid-1;
+            }
+        }
+        return false;
+    }
+};
