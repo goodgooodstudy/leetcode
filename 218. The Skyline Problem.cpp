@@ -30,3 +30,46 @@ public:
         
     }
 };
+
+
+
+class Solution {
+public:
+    vector<pair<int, int>> getSkyline(vector<vector<int>>& buildings) {
+        vector<pair<int, int>> criticals;
+        for(auto p : buildings){
+            criticals.emplace_back(p[0],p[2]);
+            criticals.emplace_back(p[1],-p[2]);
+        }
+        auto cmp = [](pair<int, int>& a, pair<int, int>& b){return a.first < b.first || a.first == b.first && a.second > b.second;};
+        sort(criticals.begin(), criticals.end(),cmp);
+        multiset<int> heights;
+        vector<pair<int, int>> rst;
+
+        for(auto p : criticals){
+
+            if(p.second > 0){
+                
+                if(heights.empty()||p.second > *heights.rbegin()){
+                    rst.emplace_back(p.first,p.second);
+
+                }
+                heights.insert(p.second);
+            }
+            else{
+                heights.erase(heights.find(-p.second));
+                if(heights.empty()){
+                    rst.emplace_back(p.first,0);
+
+                }
+                else if( -p.second > *heights.rbegin()){
+                    rst.emplace_back(p.first, *heights.rbegin());
+
+                }
+            }
+        }
+        return rst;
+        
+        
+    }
+};
