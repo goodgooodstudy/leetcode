@@ -33,3 +33,37 @@ public:
         return result;
     }
 };
+
+
+class Solution {
+public:
+    int divide(int dividend, int divisor) {
+        if(divisor == 0 || dividend == INT_MIN && divisor ==-1)return INT_MAX;
+        int sign = (dividend < 0) ^ (divisor < 0)?-1:1;
+        long long dvd = labs(dividend);
+        long long dvs = labs(divisor);
+
+        int step = 1, rst = 0;
+        long long ori_dvs = dvs;
+        while(dvd >= dvs){
+            
+            while(dvd >= dvs){
+                dvd = dvd - dvs;
+                rst = rst + step;
+                dvs = dvs << 1;
+                step = step << 1;
+                
+            }
+        dvs = ori_dvs;
+        step = 1;
+        }
+        return sign * rst;
+        
+        
+        
+
+        
+    }
+   
+    
+};
