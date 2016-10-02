@@ -43,3 +43,37 @@ public:
         
     }
 };
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        vector<int> res;
+        for(int i = 0; i < nums.size(); i++){
+            auto pt = lower_bound(res.begin(), res.end(),nums[i]);
+            if(pt==res.end()) res.push_back(nums[i]);
+            else *pt = nums[i];
+        }
+        return res.size();
+    }
+};
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        vector<int> res;
+        for(int i = 0; i < nums.size(); i++){
+            int l = 0, r = res.size()-1;
+            if(res.size() == 0 || nums[i] > res[r]){
+                res.push_back(nums[i]);
+                continue;
+            }
+            while(l<r){
+                int mid = l + (r-l)/2;
+                if(res[mid] < nums[i]) l = mid+1;
+                else if(res[mid] > nums[i]) r = mid;
+                else break;
+            }
+            if(l==r) res[l] = nums[i];
+            
+        }
+        return res.size();
+    }
+};
