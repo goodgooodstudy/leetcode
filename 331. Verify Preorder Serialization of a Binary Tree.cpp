@@ -43,3 +43,22 @@ public:
         return diff == 0;
     }
 };
+
+class Solution {
+public:
+    bool isValidSerialization(string preorder) {
+        stringstream ss(preorder);
+        string cur;
+        int slot = 1;
+        while(getline(ss, cur, ',')){
+            if(slot == 0) return false;
+            if(cur == "#"){
+                slot -= 1;
+            }
+            else {
+                slot += 1;
+            }
+        }
+        return slot == 0;
+    }
+};
