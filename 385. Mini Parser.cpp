@@ -78,3 +78,29 @@ public:
         
     }
 };
+
+
+class Solution {
+public:
+    NestedInteger deserialize(string s) {
+        istringstream ss(s);
+        return helper(ss);
+    }
+    NestedInteger helper(istringstream& in){
+        int num;
+        if(in >> num) return NestedInteger(num);
+        in.clear();
+        in.get();
+        NestedInteger list;
+        while(in.peek()!=']'){
+            list.add(helper(in));
+            if(in.peek()==','){
+                in.get();
+            }
+        }
+        in.get();
+
+        return list;
+        
+    }
+};
