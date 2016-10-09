@@ -27,3 +27,16 @@ int singleNumberII_36(int A[], int n)
     return ans;  
 }  
 
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int a = 0;
+        int b = 0;
+        for(auto c : nums){
+            int tmpa = (a&~b&~c)|(~a&b&c);
+            b = ~a&b&~c|~a&~b&c;
+            a = tmpa;
+        }
+        return a|b;
+    }
+};
