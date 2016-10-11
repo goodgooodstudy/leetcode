@@ -26,3 +26,19 @@ public:
         
     }
 };
+
+class Solution {
+public:
+    int minDepth(TreeNode* root) {
+        if(!root) return 0;
+        if(!root->right&&!root->left) return 1;
+        int l = minDepth(root->left);
+        int r = minDepth(root->right);
+        int h = 1;
+        if(!root->left) h += r;
+        else if(!root->right) h += l;
+        else h += min(l,r);
+        return h;
+        
+    }
+};
