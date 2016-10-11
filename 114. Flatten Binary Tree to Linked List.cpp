@@ -23,3 +23,21 @@ public:
         
     }
 };
+class Solution {
+public:
+    void flatten(TreeNode* root) {
+        // TreeNode dummy(-1);
+        auto t = new TreeNode(-1);
+        preorder(root, t);
+        
+    }
+    TreeNode* preorder(TreeNode* root, TreeNode* prev){
+        if(!root) return prev;
+        prev->right = root;
+        prev->left = NULL;
+        TreeNode* l = root->right;
+        TreeNode* lf = preorder(root->left, root);
+        return preorder(l, lf);
+        
+    }
+};
