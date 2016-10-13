@@ -16,6 +16,16 @@ public:
         if(route.size() == size) return true;
         if(route.size() > size) return false;
         
+//         for(auto& next : map[cur]){
+//             if(next.second > 0){
+//                 next.second --;
+                
+//                 route.push_back(next.first);
+//                 if(dfs(next.first, map, route, size)) return true;
+//                 route.pop_back();
+//                 next.second ++;
+//             }
+//         }
         for(auto ticket = map[cur].begin(); ticket!=map[cur].end();ticket++){
             if(ticket->second!=0){
                 ticket->second --;
