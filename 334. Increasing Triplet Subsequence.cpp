@@ -12,3 +12,24 @@ public:
         
     }
 };
+
+class Solution {
+public:
+    bool increasingTriplet(vector<int>& nums) {
+        vector<int> res;
+        for(int i = 0; i < nums.size(); i++){
+            if(res.empty() || nums[i] > res.back()){
+                res.push_back(nums[i]);
+                continue;
+            }
+            int l = 0, r = res.size()-1;
+            while(l < r){
+                int mid = l + (r-l)/2;
+                if(res[mid] < nums[i]) l = mid+1;
+                else r = mid;
+            }
+            res[l] = nums[i];
+        }
+        return res.size() >= 3;
+    }
+};
