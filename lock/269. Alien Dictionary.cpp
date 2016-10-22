@@ -2,7 +2,7 @@ class Solution {
 private:
     unordered_map<char, unordered_set<char>> graph;
     unordered_map<char, int> degrees;
-    void make_graph(vector<string>& words){
+    bool make_graph(vector<string>& words){
         for(int i = 1; i < words.size(); i++){
             string w1 = words[i-1], w2 = words[i];
             bool found = false;
@@ -18,9 +18,14 @@ private:
                     graph[w1[j]].insert(w2[j]);
                     found = true;
                 }
+                if(!found && j > l2){
+                        return false;
+                } 
                 
             }
+ 
         }
+        return true;
     }
     
     void make_degrees(){
@@ -36,7 +41,7 @@ public:
     
     string alienOrder(vector<string>& words) {
         if(words.size() == 1) return words[0];
-        make_graph(words);
+        if(!make_graph(words)) return "";
         make_degrees();
         
         queue<char> q;
