@@ -1,4 +1,17 @@
 /**
+* @Author: lcy
+* @Date:   2016-09-03T12:50:54-04:00
+*/
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <unordered_map>
+using namespace std;
+
+
+
+/**
  * Definition for an interval.
  * struct Interval {
  *     int start;
@@ -15,7 +28,7 @@ public:
         while(index < n && intervals[index].end < newInterval.start){
             res.push_back(intervals[index++]);
         }
-        while(index < n && (intervals[index].start <= newInterval.end)){
+        while(index < n && (intervals[index].start <= newInterval.end)){ //!!! newInterval may just before the intervals[idx]
             newInterval.start = min(newInterval.start,intervals[index].start);
             newInterval.end = max(newInterval.end,intervals[index].end);
             index++;
@@ -25,7 +38,7 @@ public:
             res.push_back(intervals[index++]);
         }
         return res;
-        
-        
+
+
     }
 };
