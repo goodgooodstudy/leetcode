@@ -1,3 +1,16 @@
+/**
+* @Author: lcy
+* @Date:   2016-09-03T12:50:54-04:00
+*/
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <unordered_map>
+using namespace std;
+
+
+
 class Solution {
 public:
     vector<string> path;
@@ -28,7 +41,7 @@ public:
                 path.pop_back();
             }
         }
-        
+
     }
     vector<vector<string>> findLadders(string beginWord, string endWord, unordered_set<string> &wordList) {
         wordList.insert(endWord);
@@ -50,7 +63,7 @@ public:
             next.clear();
         }
         return res;
-        
-        
+
+
     }
 };

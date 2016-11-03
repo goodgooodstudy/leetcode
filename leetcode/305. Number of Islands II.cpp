@@ -1,3 +1,16 @@
+/**
+* @Author: lcy
+* @Date:   2016-09-06T21:41:58-04:00
+*/
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <unordered_map>
+using namespace std;
+
+
+
 class Solution {
 public:
     vector<int> numIslands2(int m, int n, vector<pair<int, int>>& positions) {
@@ -9,7 +22,7 @@ public:
             int x = p.first, y = p.second, p_idx = n*x + y;
             roots[p_idx] = p_idx;
             ++island;
-            
+
             for(auto dir: dirs){
                 int row = x+dir.first, col = y+dir.second;
                 int new_idx = n*row + col;
@@ -25,12 +38,15 @@ public:
         }
         return res;
     }
-    
+
     int find(int idx, vector<int>& roots){
         while(roots[idx]!=idx){
             roots[idx] = roots[roots[idx]];
             idx = roots[idx];
         }
         return idx;
+        // if(root[idx] == idx) return idx;
+        // root[idx] =  findroot(root[idx], root);
+        // return root[idx];
     }
 };
