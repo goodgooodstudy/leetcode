@@ -9,7 +9,7 @@ public:
     }
     
     void push(int x) {
-        if(m.empty()||x <= getMin())m.push(x);
+        if(m.empty()||x <= getMin())m.push(x); //!!! pay attention to =
         data.push(x);
         
     }
