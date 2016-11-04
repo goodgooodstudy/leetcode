@@ -10,7 +10,7 @@ public:
             if(p.second >0){
 
                  int l = p.first-1;
-                while(cnt.count(l) && cnt[l] >0){
+                while(cnt.count(l) && cnt[l] >0){ // have to add cnt.count(l) ortherwise cnt is increasing....
                     cnt[l]--;
                     l--;
                 }
