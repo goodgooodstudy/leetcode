@@ -26,3 +26,23 @@ public:
         
     }
 };
+
+class Solution {
+public:
+    bool isValid(string s) {
+        stack<char> left;
+        for(auto c : s){
+            if(c == '(' || c == '{' || c=='[') left.push(c);
+            else{
+                if(left.empty()) return false; ///!!!!!!!
+                char l = left.top();
+                if(c == ')' && l != '(') return false;
+                if(c == '}' && l != '{') return false;
+                if(c == ']' && l != '[') return false;
+                left.pop();
+            }
+        }
+        return left.empty(); //!!!
+        
+    }
+};
