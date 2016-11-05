@@ -1,3 +1,16 @@
+/**
+* @Author: lcy
+* @Date:   2016-09-03T12:50:54-04:00
+*/
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <unordered_map>
+using namespace std;
+
+
+
 class Solution {
 public:
     string intToRoman(int num) {
@@ -12,12 +25,8 @@ public:
                     ret.append(dict[i]);
                 }
             }
-            
-        }
-        return ret;
 
-            
-        
-        
+        }
+        return ret;        
     }
 };
