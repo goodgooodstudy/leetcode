@@ -48,3 +48,34 @@ public:
     }
   
 };
+
+class Solution {
+public:
+    string countAndSay(int n) {
+        string rst = "1";
+        n--;
+        while(n-->0){
+            rst = next(rst);
+        }
+        return rst;
+    }
+    string next(string cur){
+        int idx = 0;
+        string rst;
+        while(idx < cur.size()){
+            int cnt = 1;
+            int start = idx+1;
+            while(start < cur.size()&& cur[start]==cur[start-1]){
+                cnt++;
+                start++;
+            }
+            // for(; start < cur.size(); start++){
+            //     if(cur[start] == cur[start-1])cnt++; 
+            //     else break; //!!!!!do not forget
+            // }
+            rst+=to_string(cnt)+cur[idx];
+            idx = start;
+        }
+        return rst;
+    }
+};
