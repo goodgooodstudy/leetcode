@@ -20,3 +20,29 @@ public:
         
     }
 };
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        int len = 1;
+        if(x < 0) return false;
+        int tmpx = x;
+        while(tmpx >= 10){
+            len = len*10;
+            tmpx = tmpx/10;
+        }
+        // len = len/10;
+        tmpx = x;
+
+        while(tmpx){
+            int high = tmpx/len;
+            int low = tmpx%10;
+            if(high != low) return false;
+            tmpx = tmpx - (tmpx/len)*len;
+            tmpx = tmpx/10;
+            len = len/100;
+
+        }
+        
+        return true;
+    }
+};
