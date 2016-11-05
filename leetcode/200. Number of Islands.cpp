@@ -27,3 +27,30 @@ public:
     }
     
 };
+class Solution {
+public:
+    int numIslands(vector<vector<char>>& grid) {
+        if(grid.size() == 0 || grid[0].size() == 0) return 0;
+        int cnt = 1;
+        for(int i = 0; i < grid.size(); i++){
+            for(int j = 0; j < grid[i].size(); j++){
+                if(grid[i][j] == '1'){
+                    cnt++;
+                    color(grid, i, j, cnt);
+                }
+            }
+        }
+        return cnt-1;
+    }
+    void color(vector<vector<char>>& grid, int i, int j, int c){
+        if(grid[i][j] != '1') return;
+        grid[i][j] = c+'0';
+        int m = grid.size();
+        int n = grid[0].size();
+        if(i-1 >=0 ) color(grid, i-1, j, c);
+        if(i+1 < m) color(grid, i+1, j, c);
+        if(j+1 < n ) color(grid, i, j+1, c);
+        if(j-1 >= 0) color(grid, i, j-1, c);
+        
+    }
+};
