@@ -8,6 +8,52 @@
  * };
  */
 class BSTIterator {
+private:
+    stack<TreeNode*> sk;
+public:
+    BSTIterator(TreeNode *root) {
+        findLeft(root);
+    }
+
+    /** @return whether we have a next smallest number */
+    bool hasNext() {
+        if(sk.empty()) return false;
+        else return true;
+    }
+
+    /** @return the next smallest number */
+    int next() {
+        TreeNode* rst = sk.top();
+        sk.pop();
+        if(rst->right){
+            findLeft(rst->right);
+        }
+        return rst->val;
+        
+    }
+    void findLeft(TreeNode* root){
+        while(root){
+            sk.push(root);
+            root = root->left;
+        }
+    }
+};
+
+/**
+ * Your BSTIterator will be called like this:
+ * BSTIterator i = BSTIterator(root);
+ * while (i.hasNext()) cout << i.next();
+ */
+/**
+ * Definition for binary tree
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class BSTIterator {
     vector<int> nums;
     int idx;
 public:
