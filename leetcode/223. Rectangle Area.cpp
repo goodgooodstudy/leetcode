@@ -12,3 +12,14 @@ public:
         
     }
 };
+
+
+class Solution {
+public:
+    int computeArea(int A, int B, int C, int D, int E, int F, int G, int H) {
+       int left = max(A, E), right = max(left, min(C, G));
+       int up = min(H, D), bottom = min(up, max(F, B));
+        return (C-A)*(D-B) - (right-left)*(up-bottom) + (G-E)*(H-F);
+
+    }
+};

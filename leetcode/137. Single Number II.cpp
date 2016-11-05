@@ -37,6 +37,6 @@ public:
             b = ~a&b&~c|~a&~b&c;
             a = tmpa;
         }
-        return a|b;
+        return a|b; //only b still works, number appears once
     }
 };

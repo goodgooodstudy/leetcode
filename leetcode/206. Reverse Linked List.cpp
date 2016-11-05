@@ -35,3 +35,59 @@ public:
       return reverse(next, head);
     }
 };
+
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode* root = nullptr;
+        if(head!=nullptr) pre(head, root);
+        return root;
+    }
+    ListNode* pre(ListNode* head, ListNode* & root){
+        if(head->next == nullptr){
+            root = head;
+            return head;
+        }
+        ListNode* next = head->next;
+        head->next = nullptr;
+        ListNode* newroot = pre(next, root);
+        newroot->next = head;
+        return head;
+    }
+};
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        if(!head) return head;
+        ListNode* pre = head;
+        ListNode* cur = head->next;
+        pre -> next = nullptr;
+        ListNode* next;
+        while(cur){
+            next = cur->next;
+            cur->next = pre;
+            pre = cur;
+            cur = next;
+        }
+        return pre;
+    }
+   
+};

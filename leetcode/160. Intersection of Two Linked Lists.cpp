@@ -24,3 +24,41 @@ public:
         
     }
 };
+
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        bool flip_p1 = true;
+        bool flip_p2 = true;
+        ListNode* p1 = headA;
+        ListNode* p2 = headB;
+        while(p1 != p2){
+            if(p1 == NULL && flip_p1 ){
+               p1 = headB;
+               flip_p1 = false;
+            }
+            else{
+                p1 = p1->next;
+            }
+            if(p2 == NULL && flip_p2){
+                p2 = headA;
+                flip_p2 = false;
+            }
+            else{
+                p2 = p2->next;
+            }
+            
+            
+        }
+        return p1;
+    }
+};
