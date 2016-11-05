@@ -46,15 +46,15 @@ public:
             if(i!= 0 && nums[i] == nums[i-1]) continue;
             int target = 0-nums[i];
             int start = i+1, end = nums.size()-1;
-            while(start < end){
+            while(start < end){ // when you use while ,do not forget to start++
                 if(start > i+1 && nums[start] == nums[start-1]){
-                    start++;
+                    start++; //!!!
                     continue;
                 } 
                 if(nums[start] + nums[end] == target){
                     rst.push_back({nums[i], nums[start], nums[end]});
-                    start++;
-                    end--;
+                    start++; //!!!
+                    end--; //!!!
                 }
                 else if(nums[start] + nums[end] < target){
                     start ++;
