@@ -1,6 +1,20 @@
 class Solution {
 public:
     vector<string> findRepeatedDnaSequences(string s) {
+        vector<string> rst;
+        unordered_map<string, int> cnt;
+        for(int i = 0; i <= (int)s.size()-10; i++){ ///!!!!(int)s.size()
+            string cur = s.substr(i, 10);
+            cnt[cur]++;
+            if(cnt[cur] == 2) rst.push_back(cur);
+        }
+        return rst;
+        
+    }
+};
+class Solution {
+public:
+    vector<string> findRepeatedDnaSequences(string s) {
         unordered_map<string,int> maps;
         vector<string> res;
         for(int i = 10; i <= s.size(); i++){
