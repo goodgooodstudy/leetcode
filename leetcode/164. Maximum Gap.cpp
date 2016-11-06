@@ -9,7 +9,7 @@ public:
         }
 
         int len = (maxNum-minNum)/nums.size()+1;
-        vector<vector<int>> buckets((maxNum-minNum)/len+1);
+        vector<vector<int>> buckets((maxNum-minNum)/len+1); // easy wrong
         for(int i = 0; i<nums.size();i++){
             int idx = (nums[i]-minNum)/len;
             if(buckets[idx].size()<2){
@@ -24,7 +24,7 @@ public:
         }
         int maxGap = len-1;
         int prev = 0;
-        for(int i = 1; i<buckets.size(); i++){
+        for(int i = 1; i<buckets.size(); i++){ // very concise to do 
             if(buckets[i].empty())continue;
             maxGap = max(buckets[i][0]-buckets[prev][1],maxGap);
             prev = i;

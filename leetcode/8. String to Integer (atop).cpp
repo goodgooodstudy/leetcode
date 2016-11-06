@@ -36,3 +36,33 @@ public:
     }
     
 };
+
+
+class Solution {
+public:
+    int myAtoi(string str) {
+        if(str == "") return 0;
+        long  rst = 0;
+        int idx = 0;
+        bool isNeg = false;
+        while(idx < str.size() && str[idx] == ' ')idx++;
+        if(str[idx] == '+'){
+            isNeg = false;
+            idx++;
+        }
+        else if(str[idx] == '-'){
+            isNeg = true;
+            idx++;
+        }
+        while(str[idx] >= '0' && str[idx] <= '9'){
+            rst = rst*10 + str[idx]-'0';
+            if(rst > INT_MAX && !isNeg) return INT_MAX;
+            if(rst > long(INT_MAX)+1 && isNeg) return INT_MIN;
+            idx++;
+        }
+        if(isNeg) rst = -rst;
+
+        return rst;
+        
+    }
+};
