@@ -5,7 +5,7 @@ public:
         unordered_map<char, char> maps2;
 
         for(int i = 0; i<s.size(); i++){
-            if(maps1.count(s[i])||maps2.count(t[i])){
+            if(maps1.count(s[i])||maps2.count(t[i])){ // 两个都要！！！
                 if(t[i]!=maps1[s[i]]||s[i]!=maps2[t[i]]) return false;
             }
             else{
