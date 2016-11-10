@@ -31,3 +31,20 @@ public:
         
     }
 };
+
+class Solution {
+public:
+    bool containsNearbyAlmostDuplicate(vector<int>& nums, int k, int t) {
+        set<int> rst;
+        for(int i = 0; i < nums.size(); i++){
+            if(i>k) rst.erase(nums[i-k-1]);
+            auto lower = rst.lower_bound(nums[i]-t);
+            if(lower != rst.end()){
+                if(abs(nums[i]-*lower) <=t) return true;
+            }
+            rst.insert(nums[i]);
+        }
+        return false;
+        
+    }
+};

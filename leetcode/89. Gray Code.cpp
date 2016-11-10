@@ -1,6 +1,21 @@
 class Solution {
 public:
     vector<int> grayCode(int n) {
+        vector<int> rst = {0};
+        for(int i = 1; i <= n; i++){
+            int n = rst.size();
+            for(int idx = n-1; idx >= 0; idx--){
+                int tmp = rst[idx] | 1 <<(i-1); //!!! use | not +
+                rst.push_back(tmp);
+            }
+        }
+        return rst;
+    }
+};
+
+class Solution {
+public:
+    vector<int> grayCode(int n) {
         return generate(n);
         
     }

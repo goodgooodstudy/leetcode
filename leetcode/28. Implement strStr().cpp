@@ -1,5 +1,18 @@
 class Solution {
 public:
+    int strStr(string haystack, string needle) {
+        int hayNum = haystack.size();
+        int neeNum = needle.size();
+        for(int i = 0; i <= hayNum-neeNum; i++){
+            string s = haystack.substr(i, neeNum);
+            if(s == needle) return i;
+        }
+        return -1;
+        
+    }
+};
+class Solution {
+public:
 
     int strStr(string haystack, string needle) {
         if(needle.empty()) return 0;

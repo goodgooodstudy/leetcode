@@ -29,3 +29,26 @@ public:
         
     }
 };
+
+class Solution {
+public:
+    string removeDuplicateLetters(string s) {
+        // string vector mimic stack and keeps monotically increasing
+        string rst;
+        vector<bool> visited(26, false);
+        vector<int> cnt(26, 0);
+        for(char c : s) cnt[c-'a']++;
+        for(char c : s){
+            cnt[c-'a']--;
+            if(visited[c-'a']) continue;
+            while(!rst.empty() && c < rst.back() && cnt[rst.back()-'a'] > 0){
+                visited[rst.back()-'a'] = false;
+                rst.pop_back();
+            }
+            visited[c-'a'] = true;
+            rst += c;
+        }
+        return rst;
+        
+    }
+};

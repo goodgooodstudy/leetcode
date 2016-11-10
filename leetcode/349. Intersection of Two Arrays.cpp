@@ -6,7 +6,8 @@ public:
         for(auto num:nums2){
             if(n1.count(num)){
                 common.push_back(num);
-                n1.erase(num);
+                n1.erase(num);  //!!!! unique!!
+   
             }
         }
 

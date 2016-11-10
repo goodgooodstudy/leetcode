@@ -3,7 +3,7 @@ public:
     int maxProfit(int k, vector<int>& prices) {
         if(prices.empty()) return 0;
         int days = prices.size();
-        if( k > days>>1) return maxProfit2(k,prices);
+        if( k > days>>1) return maxProfit2(k,prices); //buy and sell ->count as one transaction
         vector<vector<int>> hold(days,vector<int>(k+1,0));
         vector<vector<int>> unhold(days,vector<int>(k+1,0));
         hold[0][0] = -prices[0];
@@ -19,7 +19,7 @@ public:
 
         for(int i = 1; i < days; i++){
             for(int j = 1; j <= k; j++){
-                hold[i][j] = max(hold[i-1][j], unhold[i-1][j]-prices[i]);
+                hold[i][j] = max(hold[i-1][j], unhold[i-1][j]-prices[i]); // note it is j not j-1
                 unhold[i][j] = max(unhold[i-1][j], hold[i-1][j-1]+prices[i]);
             }
         }

@@ -1,5 +1,8 @@
 class Solution {
 public:
+           // border moves out of boundary... 
+        //For the second follow-up question, here's a solution for an infinite board. 
+//     Instead of a two-dimensional array of ones and zeros, I represent the board as a set of live cell coordinates.
     void gameOfLife(vector<vector<int>>& board) {
         if(board.empty()) return;
         int m = board.size(), n = board[0].size();
