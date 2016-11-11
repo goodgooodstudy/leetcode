@@ -6,7 +6,7 @@ public:
         int n = words.size(),len = words[0].size();
         unordered_map<string, int> cnts;
         for( string w : words){cnts[w]++;}
-        for(int i = 0; i < s.size() - n*len+1; i++){
+        for(int i = 0; i < (int)s.size() - n*len+1; i++){
             unordered_map<string, int>seen;
             int j = 0;
             for(; j < n; j++){
