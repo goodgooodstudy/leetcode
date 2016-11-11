@@ -23,7 +23,34 @@ using namespace std;
 // Output: 28
 //
 // Explanation: The maximum result is 5 ^ 25 = 28.
-
+class Solution {
+public:
+    int findMaximumXOR(vector<int>& nums) {
+        int mx = 0, mask = 0;
+        for(int i = 31; i >=0; i--){
+            mask |= 1 << i;
+            unordered_set<int> left;
+            for(int n : nums){
+                left.insert(n&mask);// reserve Left bits and ignore Right bits
+            }
+            /* Use 0 to keep the bit, 1 to find XOR
+             * 0 ^ 0 = 0 
+             * 0 ^ 1 = 1
+             * 1 ^ 0 = 1
+             * 1 ^ 1 = 0
+             */
+            int tmp = mx | (1 << i);// in each iteration, there are pair(s) whoes Left bits can XOR to max
+            for(int n : left){
+                if(left.count(n^tmp)){
+                    mx = tmp;
+                    break;
+                }
+            }
+        }
+        return mx;
+        
+    }
+};
 
 class trie{
 public:

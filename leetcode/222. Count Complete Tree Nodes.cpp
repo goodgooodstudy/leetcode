@@ -7,6 +7,7 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+// still cannot come up with....
 class Solution {
 public:
     int countNodes(TreeNode* root) {
