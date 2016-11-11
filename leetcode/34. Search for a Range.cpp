@@ -1,5 +1,43 @@
 class Solution {
 public:
+    int searchLow(vector<int>& nums, int l, int r, int target){
+        while(l < r){
+            int mid = l + (r-l)/2;
+            if(nums[mid] < target){
+                l = mid+1;
+            }
+            else if(nums[mid] >= target){
+                r = mid;
+            }
+        }
+        return l;
+    }
+    int searchHigh(vector<int>& nums, int l, int r, int target){
+        while(l < r){
+            int mid = l + (r-l)/2+1;
+            if(nums[mid] <= target){
+                l = mid;
+            }
+            else if(nums[mid] > target){
+                r = mid-1;
+            }
+        }
+        return l;
+    }
+    vector<int> searchRange(vector<int>& nums, int target) {
+        vector<int> rst={-1,-1};
+        int l = searchLow(nums, 0, nums.size()-1, target);
+        int h = searchHigh(nums, 0, nums.size()-1, target);
+        cout << l << h << endl;
+        if(nums[l] == target && nums[h] == target){
+            rst[0] = l;
+            rst[1] = h;
+        }
+        return rst;
+    }
+};
+class Solution {
+public:
     vector<int> searchRange(vector<int>& nums, int target) {
         vector<int> result;
         bool find = false;
