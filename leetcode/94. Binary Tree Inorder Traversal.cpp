@@ -7,6 +7,36 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    vector<int> inorderTraversal(TreeNode* root) {
+        
+        stack<TreeNode*> sk;
+        vector<int> rst;
+        while(!sk.empty() || root){
+            while(root){
+                sk.push(root);
+                root = root->left;
+            }
+            if(!sk.empty()){
+                rst.push_back(sk.top()->val);
+                root = sk.top()->right;
+                sk.pop();
+            }
+            
+        }
+        return rst;
+    }
+};
 class Solution {
 public:
   // recursive one
