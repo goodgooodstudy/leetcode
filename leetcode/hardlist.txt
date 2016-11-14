@@ -1,7 +1,7 @@
 @Author: lcy
 @Date:   2016-11-10T11:26:07-05:00
 @Last modified by:   lcy
-@Last modified time: 2016-11-11T13:18:10-05:00
+@Last modified time: 2016-11-13T17:18:37-05:00
 
 124. Binary Tree Maximum Path Sum
 101. Symmetric Tree
@@ -21,3 +21,69 @@ For the rest I agree, 3*3 is simply better than 2*2*2, so you'd never use 2 more
 
 301. Remove Invalid Parentheses
 不用for 循环。。。。直接用idx迭代，(((去掉哪个 情况都是一样的。。。。
+
+
+114. Flatten Binary Tree to Linked List   QuestionEditorial Solution
+感觉智商封顶。。。。怎么办。。。
+
+295. Find Median from Data Stream
+用一个大堆， 再用一个小堆。。。。就是记不住。。。智障。。
+
+264. Ugly Number II
+有可能会有重复的。。。
+
+341. Flatten Nested List Iterator
+用两个stack存begin和end
+
+95. Unique Binary Search Trees II
+构造的是binary tree啊啊啊啊。存一个min ，mx
+
+330. Patching Array
+如果total 可以覆盖到下一个数减一的话，就不miss，否则就miss这个total+1
+
+207. Course Schedule
+用入度保证不会enque两次
+还有图里面和degrees里面有可能有的点没存进去，所以要遍历所有点，确保把入度是0的都算进来
+
+281. Zigzag Iterator
+可以用queue 存pair，begin和end
+
+276. Paint Fence
+You have to paint all the posts such that no more than two adjacent fence posts have the same color.
+可以多个两个连着的。。。。
+
+413. Arithmetic Slices
+存end在位置i上的个数， total累积
+
+275. H-Index II
+典型的二分，但是中间的条件非常纠结，还有最后一种特殊情况
+
+98. Validate Binary Search Tree
+典型的树的中遍历，存一个上次结点即可
+
+60. Permutation Sequence
+就是这个序数，要先减一
+
+321. Create Maximum Number
+非常难写
+
+156. Binary Tree Upside Down
+二叉树的遍历，有点不知所措
+
+332. Reconstruct Itinerary   QuestionEditorial Solution
+不一定要用set记录是不是visited过了，可以用map<string, int>第二个是零的时候说明这张票用过了
+不熟练
+
+145. Binary Tree Postorder Traversal
+记录lastnode, 如果top->right == lastnode 就pop栈
+
+377. Combination Sum IV !!!!!!
+用backtracking超时
+相当于coins！！！
+
+57. Insert Interval
+交叉时候的条件判断错了
+
+382. Linked List Random Node
+蓄水池，不清楚原来有多大的池子。随机取出来一个或者k个
+把第一个当做那个 ，接下来rand()%（2++）, 如果是0则把当前的当做结果

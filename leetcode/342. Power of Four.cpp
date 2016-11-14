@@ -1,3 +1,16 @@
+/**
+* @Author: lcy
+* @Date:   2016-09-03T12:50:54-04:00
+*/
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <unordered_map>
+using namespace std;
+
+
+
 class Solution {
 public:
     bool isPowerOfFour(int num) {
@@ -9,11 +22,14 @@ public:
 
         // }
         // return false;
-   
+
         return num>0 && ((num&(num-1)) == 0) && ((num & 0x55555555)!=0);
-        
+
     }
 };
+//  & 的优先级比！=低、、、
+// (num&(num-1)) != 0  对的
+// num&(num-1) != 0 错的
 
 /*
 解题思路：
