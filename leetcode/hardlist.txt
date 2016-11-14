@@ -1,7 +1,7 @@
 @Author: lcy
 @Date:   2016-11-10T11:26:07-05:00
 @Last modified by:   lcy
-@Last modified time: 2016-11-13T17:18:37-05:00
+@Last modified time: 2016-11-14T11:36:46-05:00
 
 124. Binary Tree Maximum Path Sum
 101. Symmetric Tree
@@ -87,3 +87,24 @@ You have to paint all the posts such that no more than two adjacent fence posts 
 382. Linked List Random Node
 蓄水池，不清楚原来有多大的池子。随机取出来一个或者k个
 把第一个当做那个 ，接下来rand()%（2++）, 如果是0则把当前的当做结果
+
+47. Permutations II
+backtracking 注意要存visited 先sort！！去重
+
+130. Surrounded Regions
+不用判断=0 只要>0 就可以了。。这样才可以过
+
+82.deleteDuplicates
+可以用递归。。。
+
+302. Smallest Rectangle Enclosing Black Pixels
+二分搜索，还是不太会写
+
+158. Read N Characters Given Read4 II - Call multiple times
+不是很会 用一个queue存上次多读出来的东西
+
+305. Number of Islands II
+典型的 union find
+
+425. Word Squares
+不会。 思路简单
