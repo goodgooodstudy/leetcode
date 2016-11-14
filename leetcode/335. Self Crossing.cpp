@@ -19,3 +19,20 @@ public:
         return false;
     }
 };
+
+
+class Solution {
+public:
+    bool isSelfCrossing(vector<int>& x) {
+        int a = 0, b = 0, c = 0, d = 0, e = 0, f = 0;
+        for(int i = 0 ;i < x.size(); i++){
+            f = e; e=d; d =c; c = b; b = a; a = x[i];
+            if(i >= 3){
+                if(d>= b && (a>=c || (a>=c-e && c-e >= 0 && b+f >= d)))
+                    return true;
+            }
+
+        }
+        return false;
+    }
+};
