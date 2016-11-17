@@ -13,6 +13,26 @@ public:
         }
         reverse(rst.begin(),rst.end());
         return rst;
-        
+
+    }
+};
+
+class Solution {
+public:
+    string toHex(int num) {
+        uint32_t n = num;
+        if(n==0) return "0";
+        string rst;
+        while(n != 0){
+            int cur = n%16;
+            if(cur >=10){
+                rst+='a'+cur-10;
+            }
+            else rst+='0'+cur;
+            n = n/16;
+        }
+        reverse(rst.begin(), rst.end());
+        return rst;
+
     }
 };

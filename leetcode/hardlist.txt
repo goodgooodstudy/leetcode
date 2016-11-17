@@ -1,7 +1,7 @@
 @Author: lcy
 @Date:   2016-11-10T11:26:07-05:00
 @Last modified by:   lcy
-@Last modified time: 2016-11-14T11:36:46-05:00
+@Last modified time: 2016-11-14T21:50:24-05:00
 
 124. Binary Tree Maximum Path Sum
 101. Symmetric Tree
@@ -108,3 +108,40 @@ backtracking 注意要存visited 先sort！！去重
 
 425. Word Squares
 不会。 思路简单
+
+90. Subsets II
+先sort！！！
+
+352. Data Stream as Disjoint Intervals
+57. Insert Interval
+都tm还不会。。。
+
+254. Factor Combinations
+数学题还是有点不会
+
+259. 3Sum Smaller
+i, j 加起来小于target 那么cnt+=j-i, 小于j的数和i组合都符合条件，i++
+
+267. Palindrome Permutation II
+permutation 去重
+if(i!=0 && left[i] == left[i-1] && visited[i-1]) continue;
+
+320. Generalized Abbreviation
+backtracking 每次要么用这个字，要么不用num++
+
+255. Verify Preorder Sequence in Binary Search Tree
+stack 存左边的一直递减，在left subtree里面，
+如果大于stack的顶端，那么在right subtree, pop stack更新lower_bound
+中间出现cur<lower_bound return false
+
+271. Encode and Decode Strings
+string find_first_of
+num+"@"+str
+
+310. Minimum Height Trees
+结束条件是还剩两个没有visited 或者一个没有visited 不是q的大小。。。
+
+323. Number of Connected Components in an Undirected Graph
+刚开始都是孤立的点，每增加一个边 如果root不一样，则减少了一个components
+
+和增加点区别开。。。遍历neigh点。
