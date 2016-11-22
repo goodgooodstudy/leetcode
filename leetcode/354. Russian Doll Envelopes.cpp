@@ -25,3 +25,18 @@ public:
         
     }
 };
+
+ int maxEnvelopes(vector<pair<int, int>>& envelopes) 
+{
+	int n = envelopes.size();
+	auto cmp = [](pair<int, int> a, pair<int, int> b){return a.first < b.first || a.first == b.first && a.second > b.second;};
+    sort(envelopes.begin(), envelopes.end(), cmp);
+    vector<int> collector;
+    for(int i = 0; i < envelopes.size(); i++){
+        auto it = lower_bound(collector.begin(), collector.end(), envelopes[i].second);
+        if(it==collector.end()) collector.push_back(envelopes[i].second);
+        else *it = min(*it, envelopes[i].second);
+    }
+    return collector.size();
+	
+}
