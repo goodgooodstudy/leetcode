@@ -18,8 +18,34 @@ public:
                 }
             }
         }
-        
+
         return s.substr(start, maxL);
-        
+
+    }
+};
+
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        if(s.empty()) return "";
+        if(s.size() == 1) return s;
+        int mxLen = 1,min_start = 0;
+        for(int i = 0; i < s.size(); i++){
+            if(s.size() - i+1 < mxLen/2) break;
+            int j = i, k = i;
+            while(k+1 < s.size() && s[k+1] == s[k])k++;
+            while(j-1 >=0 && s[j-1] == s[j]) j--;
+            while(k+1 < s.size() && j-1 >=0 && s[k+1] == s[j-1] ){
+                k++;
+                j--;
+            }
+            cout << j <<" "<< k<<endl;
+            int mx_len = k-j+1;
+            if(mx_len > mxLen){
+                mxLen = mx_len;
+                min_start = j;
+            }
+        }
+        return s.substr(min_start, mxLen);
     }
 };

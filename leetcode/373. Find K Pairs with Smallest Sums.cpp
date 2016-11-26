@@ -7,7 +7,7 @@ public:
        auto cmp = [&nums1, &nums2](pair<int, int>a, pair<int, int>b){return nums1[a.first]+nums2[a.second] >nums1[b.first]+nums2[b.second]; };
        priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(cmp)> minheap(cmp);
        minheap.emplace(0,0);
-       while(k-- >0 && minheap.size()){
+       while(k-- >0 && minheap.size()){ //!!minheap.size() or k = min(k, int(nums1.size())*int(nums2.size()))
            auto idx_pair = minheap.top();minheap.pop();
            res.emplace_back(nums1[idx_pair.first],nums2[idx_pair.second]);
            if(idx_pair.first+1<nums1.size()){
@@ -18,8 +18,8 @@ public:
            }
        }
        return res;
-       
-       
+
+
     }
 };
 
@@ -46,7 +46,7 @@ public:
             q.pop();
         }
         return res;
-       
+
     }
     struct cmp{
         bool operator()(pair<int, int>&a, pair<int,int>&b){
@@ -70,7 +70,7 @@ public:
     //       }
     //   }
     //   return res;
-       
-       
+
+
     // }
 };

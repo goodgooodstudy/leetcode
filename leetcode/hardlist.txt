@@ -145,3 +145,42 @@ num+"@"+str
 刚开始都是孤立的点，每增加一个边 如果root不一样，则减少了一个components
 
 和增加点区别开。。。遍历neigh点。
+
+410. Split Array Largest Sum
+二分 思路很巧妙。
+
+456. 132 Pattern
+
+365. Water and Jug Problem
+辗转相除法，求最大公约数
+353. Design Snake Game
+需要再好好看看
+
+
+317. Shortest Distance from All Buildings
+对每个1为起点，算最短距离，注意怎么保证已visit过的删掉。
+还有一个和
+
+https://discuss.leetcode.com/topic/52542/c-template-for-all-combination-problem-set
+k Sum 1 & 2
+
+coin change
+每个可以多次使用，有多少种方法
+377. Combination Sum IV （backtracking 超时，dp）
+n遍历所有nums 凑够target
+dp[i] +=dp[i-n];
+39. Combination Sum backtracking 得到所有可能的组合
+
+
+每个只能用一次，有多少种 40. Combination Sum II backtracking
+dp[0][0] = 1;
+dp[k][0] = 1;
+dp[0][k] = 0;
+dp[end][j] = end == 0? j == 0: dp[end-1][j] + ( j-nums[end] >= 0 && dp[end-1][j-nums[end]]);
+
+
+每个只能用一次，能不能拼成 416. Partition Equal Subset Sum （dp，但是不能重复，每个就用或者不用）
+dp[i][target] 用前i个拼target
+if i == 0 && j==0 true: false
+else dp[i-1][target] || target-nums[i] >= 0 && dp[i-1][target-nums[i]]
+dp[end][j] = end == 0? j == 0: dp[end-1][j] ||( j-nums[end] >= 0 && dp[end-1][j-nums[end]]);

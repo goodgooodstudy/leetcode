@@ -1,5 +1,30 @@
 class Solution {
 public:
+    int maxProfit(vector<int>& prices) {
+        int n = prices.size();
+        if(n == 0) return 0;
+        vector<vector<int>> hold(n, vector<int>(3,0));
+        vector<vector<int>> unhold(n, vector<int>(3,0));
+
+        for(int k = 0; k < 3; k++){
+            hold[0][k] = - prices[0];
+            unhold[0][k] = 0;
+        }
+        for(int i = 0; i < n; i++){
+            hold[i][0] = -prices[0];
+            unhold[i][0] = 0;
+        }
+        for(int i= 1; i < n; i++){
+            for(int k = 1; k < 3; k++){
+                hold[i][k] = max(unhold[i-1][k-1]-prices[i],hold[i-1][k]);
+                unhold[i][k] = max(hold[i-1][k]+prices[i], unhold[i-1][k]);
+            }
+        }
+        return unhold[n-1][2];
+    }
+};
+class Solution {
+public:
 /*
 解释：
 首先，因为能买2次（第一次的卖可以和第二次的买在同一时间），但第二次的买不能在第一次的卖左边。
@@ -12,7 +37,7 @@ f2[i]表示 -- 截止到i下标为止，右边所做交易能够达到最大prof
     int maxProfit(vector<int> &prices) {
         // Start typing your C/C++ solution below
         // DO NOT write int main() function
-        
+
         int size = prices.size();
         if (size == 0)
             return 0;
@@ -63,7 +88,7 @@ public:
             ret=max(ret,leftProfit[i]+maxProfit);
         }
         return ret;
-        
+
     }
 };
 
@@ -85,8 +110,8 @@ public:
             }
             return maxProfit;
 
-            
+
         }
-        
+
     }
 };
