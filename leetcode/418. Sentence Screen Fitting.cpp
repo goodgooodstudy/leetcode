@@ -1,3 +1,26 @@
+class Solution {
+public:
+    int wordsTyping(vector<string>& sentence, int rows, int cols) {
+        unordered_map<int, int> dict;
+        int idx = 0, n = sentence.size();
+        for(int i = 0; i < rows; i++){
+            int start = idx%n;
+            if(dict.count(start)){
+                idx = idx + dict[start];
+            }
+            else{
+                int k = 0, len = 0;
+                for(k=0; len + sentence[(start+k)%n].size() <= cols-k; k++){
+                    len += sentence[(start+k)%n].size();
+                }
+                dict[start] = k;
+                idx = idx + k;
+            }
+        }
+        return idx/n;
+    }
+    
+};
 /**
 * @Author: lcy
 * @Date:   2016-10-30T11:39:01-04:00
