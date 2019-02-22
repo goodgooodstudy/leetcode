@@ -1,3 +1,38 @@
+class Solution {  
+    vector<string> helper(vector<int>& dict, string center){
+        vector<string> rst;
+        for(int i = 0; i < dict.size(); i++){
+            if(dict[i] >= 2){
+                dict[i] -= 2;
+                for(string n : helper(dict, center)){
+                    rst.push_back((char)i + n + char(i));
+                }
+                dict[i] += 2;
+            }
+        }
+        if(rst.size() == 0) rst.push_back(center);
+        return rst;
+    }
+
+    
+public:
+    vector<string> generatePalindromes(string s) {
+        vector<string> rst;
+        vector<int> dict(256, 0);
+        for(char c : s) dict[c]++;
+        string center;
+        for(int i = 0; i < 256; i++){
+            if(dict[i]%2 == 1){
+                if(center!="") return vector<string>();
+                center = char(i);
+                dict[i]--;
+            }
+        }
+        rst = helper(dict, center);
+        return rst;
+    }
+};
+// ttl for 'aaaaaaaaaaaaaaaaaaaaaaaaaaa'
 class Solution {
 public:
     vector<string> generatePalindromes(string s) {
