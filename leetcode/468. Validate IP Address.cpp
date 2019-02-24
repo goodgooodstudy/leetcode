@@ -73,3 +73,56 @@ public:
         else return "Neither";
     }
 };
+
+
+
+class Solution {
+private:
+    const string validIPv6Chars = "0123456789abcdefABCDEF";
+public:
+    string validIPAddress(string IP) {
+        if(validIP4(IP)) return "IPv4";
+        if(validIP6(IP)) return "IPv6";
+        return "Neither";
+    }
+    bool validIP4(string IP){
+        vector<string> res;
+        IP+=".";
+        stringstream ss(IP);
+        string cur;
+        while(getline(ss, cur, '.')){
+            res.push_back(cur);
+        }
+        if(res.size() != 4) return false;
+        for(string num : res){
+            if(num.size() < 1||num.size() > 1 && num[0] == '0') return false;
+            if(num.size() > 3) return false;
+            int n = 0;
+            for(int i = 0; i < num.size(); i++){
+                if(num[i] < '0' || num[i] > '9') return false;
+                n = n*10 + (num[i]-'0');
+            }
+            if(n<0 || n >255) return false;
+        }
+        return true;
+    }
+    bool validIP6(string IP){
+        vector<string> res;
+        IP+=":";
+        stringstream ss(IP);
+        string cur;
+        while(getline(ss, cur, ':')){
+            res.push_back(cur);
+        }
+        if(res.size() != 8) return false;
+        for(int i = 0; i < 8; i++){
+            if(res[i].size()>4 || res[i].size()<1) return false;
+            for(int j = 0; j < res[i].size(); j++){
+                if(validIPv6Chars.find(res[i][j]) == string::npos){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+};
