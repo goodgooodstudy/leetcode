@@ -73,3 +73,57 @@ public:
 
     }
 };
+
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    vector<int> closestKValues(TreeNode* root, double target, int k) {
+        stack<TreeNode*> small;
+        stack<TreeNode*> large;
+        pushsmaller(root, target, small);
+        pushlarge(root, target, large);
+        vector<int> res;
+        while(res.size() < k){
+            if(small.empty() || (!large.empty() && large.top()->val-target < target - small.top()->val)){
+                TreeNode* cur = large.top();
+                res.push_back(cur->val);
+                large.pop();
+                pushlarge(cur->right, target, large);
+            }else{
+                TreeNode* cur = small.top();
+                res.push_back(small.top()->val);
+                small.pop();
+                pushsmaller(cur->left, target, small);
+            }
+        }
+        return res;
+        
+    }
+    void pushsmaller(TreeNode* root, double target, stack<TreeNode*>& sk){
+        if(!root) return;
+        if(root->val < target){
+            sk.push(root);
+            pushsmaller(root->right, target, sk);
+        }else{
+            pushsmaller(root->left, target, sk);
+        }
+    }
+    void pushlarge(TreeNode* root, double target, stack<TreeNode*>& sk){
+        if(!root) return;
+        if(root->val >= target){
+            sk.push(root);
+            pushlarge(root->left, target, sk);
+        }else{
+            pushlarge(root->right, target, sk);
+        }
+    }
+};
